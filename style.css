@@ -1,3 +1,41 @@
+/* === Color Scheme === */
+:root {
+  --bg: #fff;
+  --text: #333;
+  --text-secondary: #555;
+  --text-muted: #666;
+  --text-faint: #888;
+  --text-fainter: #999;
+  --text-faintest: #bbb;
+  --link: #333;
+  --link-hover: #666;
+  --link-underline: #ccc;
+  --border: #ddd;
+  --border-light: #ccc;
+  --bullet: #bbb;
+  --shadow: rgba(0,0,0,0.08);
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161616;
+    --text: #d4d4d4;
+    --text-secondary: #b0b0b0;
+    --text-muted: #999;
+    --text-faint: #808080;
+    --text-fainter: #707070;
+    --text-faintest: #555;
+    --link: #d4d4d4;
+    --link-hover: #999;
+    --link-underline: #444;
+    --border: #333;
+    --border-light: #444;
+    --bullet: #555;
+    --shadow: rgba(0,0,0,0.3);
+  }
+}
+
 /* === Reset & Base === */
 *, *::before, *::after {
   margin: 0;
@@ -12,8 +50,8 @@ html {
 
 body {
   font-family: Georgia, 'Times New Roman', serif;
-  color: #333;
-  background: #fff;
+  color: var(--text);
+  background: var(--bg);
   line-height: 1.6;
   padding: 2rem 1.5rem;
 }
@@ -36,7 +74,7 @@ a {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 0.8rem;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  box-shadow: 0 1px 4px var(--shadow);
 }
 
 /* === Header / Name === */
@@ -51,17 +89,17 @@ header h1 {
 }
 
 header h1 a {
-  color: #333;
+  color: var(--text);
   text-decoration: none;
 }
 
 header h1 a:hover {
-  color: #666;
+  color: var(--text-muted);
 }
 
 .tagline {
   font-size: 0.85rem;
-  color: #888;
+  color: var(--text-faint);
   margin-bottom: 0.8rem;
 }
 
@@ -74,17 +112,17 @@ nav {
 }
 
 nav a {
-  color: #666;
+  color: var(--text-muted);
   text-decoration: none;
   margin-right: 1.2rem;
 }
 
 nav a:hover {
-  color: #333;
+  color: var(--text);
 }
 
 nav a.active {
-  color: #333;
+  color: var(--text);
   font-weight: 600;
 }
 
@@ -94,13 +132,13 @@ nav a.active {
 }
 
 .nav-right a {
-  color: #999;
+  color: var(--text-fainter);
   margin-right: 0;
   margin-left: 0.8rem;
 }
 
 .nav-right a:hover {
-  color: #333;
+  color: var(--text);
 }
 
 
@@ -114,14 +152,14 @@ nav a.active {
 }
 
 .bio a {
-  color: #333;
+  color: var(--link);
   text-decoration: underline;
-  text-decoration-color: #ccc;
+  text-decoration-color: var(--link-underline);
   text-underline-offset: 2px;
 }
 
 .bio a:hover {
-  text-decoration-color: #333;
+  text-decoration-color: var(--text);
 }
 
 /* === Section Headings === */
@@ -131,7 +169,7 @@ h2 {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #999;
+  color: var(--text-fainter);
   margin-top: 3rem;
   margin-bottom: 1rem;
 }
@@ -149,13 +187,13 @@ h2 {
 
 .role .meta {
   font-size: 0.8rem;
-  color: #888;
+  color: var(--text-faint);
   margin-bottom: 0.3rem;
 }
 
 .role p, .role ul {
   font-size: 0.9rem;
-  color: #555;
+  color: var(--text-secondary);
 }
 
 .role ul {
@@ -172,19 +210,19 @@ h2 {
   content: "\00B7";
   position: absolute;
   left: 0;
-  color: #bbb;
+  color: var(--bullet);
   font-weight: 700;
 }
 
 .role ul a {
-  color: #555;
+  color: var(--text-secondary);
   text-decoration: underline;
-  text-decoration-color: #ccc;
+  text-decoration-color: var(--link-underline);
   text-underline-offset: 2px;
 }
 
 .role ul a:hover {
-  text-decoration-color: #555;
+  text-decoration-color: var(--text-secondary);
 }
 
 /* === Links list (articles, talks) === */
@@ -199,19 +237,34 @@ h2 {
 }
 
 .links-list a {
-  color: #333;
+  color: var(--link);
   text-decoration: underline;
-  text-decoration-color: #ccc;
+  text-decoration-color: var(--link-underline);
   text-underline-offset: 2px;
 }
 
 .links-list a:hover {
-  text-decoration-color: #333;
+  text-decoration-color: var(--text);
 }
 
 .links-list .meta {
   font-size: 0.78rem;
-  color: #999;
+  color: var(--text-fainter);
+}
+
+/* === Section subtitle (press topics) === */
+.section-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  margin-bottom: 1rem;
+}
+
+/* === Inline section h3 === */
+.section-h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 1.2rem;
+  margin-bottom: 0.6rem;
 }
 
 /* === Blog === */
@@ -225,7 +278,7 @@ h2 {
 }
 
 .blog-list a {
-  color: #333;
+  color: var(--text);
   text-decoration: none;
   font-weight: 600;
 }
@@ -236,14 +289,14 @@ h2 {
 
 .blog-list .date {
   font-size: 0.78rem;
-  color: #999;
+  color: var(--text-fainter);
   display: block;
   margin-top: 0.1rem;
 }
 
 .blog-list .excerpt {
   font-size: 0.85rem;
-  color: #666;
+  color: var(--text-muted);
   margin-top: 0.2rem;
 }
 
@@ -256,7 +309,7 @@ article h1 {
 
 article .post-date {
   font-size: 0.8rem;
-  color: #999;
+  color: var(--text-fainter);
   margin-bottom: 1.5rem;
 }
 
@@ -275,22 +328,22 @@ article h2 {
 }
 
 article blockquote {
-  border-left: 3px solid #ddd;
+  border-left: 3px solid var(--border);
   padding-left: 1rem;
   margin: 1rem 0;
-  color: #666;
+  color: var(--text-muted);
   font-style: italic;
 }
 
 article a {
-  color: #333;
+  color: var(--link);
   text-decoration: underline;
-  text-decoration-color: #ccc;
+  text-decoration-color: var(--link-underline);
   text-underline-offset: 2px;
 }
 
 article a:hover {
-  text-decoration-color: #333;
+  text-decoration-color: var(--text);
 }
 
 /* === Footer === */
@@ -298,16 +351,16 @@ footer {
   margin-top: 4rem;
   padding-top: 1rem;
   font-size: 0.78rem;
-  color: #bbb;
+  color: var(--text-faintest);
 }
 
 footer a {
-  color: #bbb;
+  color: var(--text-faintest);
   text-decoration: none;
 }
 
 footer a:hover {
-  color: #333;
+  color: var(--text);
 }
 
 .footer-lang {
